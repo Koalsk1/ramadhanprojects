@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Schedule - Ramadhan Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="navbar.html" class="logo">Koalski</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="navbar.html#home">Home</a></li>
+                <li><a href="navbar.html#about">About</a></li>
+                <li><a href="navbar.html#services">Services</a></li>
+                <li><a href="navbar.html#portfolio">Portfolio</a></li>
+                <li><a href="navbar.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="prayer-schedule">
+        <div class="schedule-container">
+            <div class="schedule-header">
+                <h1>Prayer Schedule</h1>
+                <p>Check the prayer times for your location</p>
+            </div>
+
+            <div class="location-selector">
+                <select id="location">
+                    <option value="jakarta">Jakarta, Indonesia</option>
+                    <option value="mecca">Mecca, Saudi Arabia</option>
+                    <option value="medina">Medina, Saudi Arabia</option>
+                </select>
+            </div>
+
+            <div class="date-selector">
+                <button class="date-btn">Yesterday</button>
+                <button class="date-btn active">Today</button>
+                <button class="date-btn">Tomorrow</button>
+            </div>
+
+            <div class="prayer-times">
+                <div class="prayer-item">
+                    <div class="prayer-name">
+                        <i class="fas fa-sun"></i>
+                        <span>Fajr</span>
+                    </div>
+                    <div class="prayer-time">04:30 AM</div>
+                </div>
+                <div class="prayer-item">
+                    <div class="prayer-name">
+                        <i class="fas fa-sun"></i>
+                        <span>Sunrise</span>
+                    </div>
+                    <div class="prayer-time">05:45 AM</div>
+                </div>
+                <div class="prayer-item">
+                    <div class="prayer-name">
+                        <i class="fas fa-sun"></i>
+                        <span>Dhuhr</span>
+                    </div>
+                    <div class="prayer-time">11:45 AM</div>
+                </div>
+                <div class="prayer-item">
+                    <div class="prayer-name">
+                        <i class="fas fa-sun"></i>
+                        <span>Asr</span>
+                    </div>
+                    <div class="prayer-time">03:15 PM</div>
+                </div>
+                <div class="prayer-item">
+                    <div class="prayer-name">
+                        <i class="fas fa-moon"></i>
+                        <span>Maghrib</span>
+                    </div>
+                    <div class="prayer-time">05:45 PM</div>
+                </div>
+                <div class="prayer-item">
+                    <div class="prayer-name">
+                        <i class="fas fa-moon"></i>
+                        <span>Isha</span>
+                    </div>
+                    <div class="prayer-time">07:00 PM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 

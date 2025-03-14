@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayers - Ramadhan Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="navbar.html" class="logo">Koalski</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="navbar.html#home">Home</a></li>
+                <li><a href="navbar.html#about">About</a></li>
+                <li><a href="navbar.html#services">Services</a></li>
+                <li><a href="navbar.html#portfolio">Portfolio</a></li>
+                <li><a href="navbar.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="prayers-container">
+        <div class="prayers-content">
+            <div class="prayers-header">
+                <h1>Islamic Prayers</h1>
+                <p>A collection of authentic prayers and supplications</p>
+            </div>
+
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search prayers..." id="searchInput">
+            </div>
+
+            <div class="category-filter">
+                <button class="category-btn active">All</button>
+                <button class="category-btn">Morning</button>
+                <button class="category-btn">Evening</button>
+                <button class="category-btn">Before Sleep</button>
+                <button class="category-btn">After Prayer</button>
+            </div>
+
+            <div class="prayers-grid">
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <div class="prayer-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h3 class="prayer-title">Morning Supplication</h3>
+                    </div>
+                    <div class="prayer-text">
+                        أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ
+                    </div>
+                    <div class="prayer-translation">
+                        We have reached the morning and kingship belongs to Allah, praise is to Allah. None has the right to be worshipped except Allah, alone, without any partner.
+                    </div>
+                    <div class="prayer-actions">
+                        <span class="prayer-category">Morning</span>
+                        <div class="prayer-buttons">
+                            <button class="prayer-btn copy-btn">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button class="prayer-btn favorite-btn">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <div class="prayer-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h3 class="prayer-title">Evening Supplication</h3>
+                    </div>
+                    <div class="prayer-text">
+                        أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ
+                    </div>
+                    <div class="prayer-translation">
+                        We have reached the evening and kingship belongs to Allah, praise is to Allah. None has the right to be worshipped except Allah, alone, without any partner.
+                    </div>
+                    <div class="prayer-actions">
+                        <span class="prayer-category">Evening</span>
+                        <div class="prayer-buttons">
+                            <button class="prayer-btn copy-btn">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button class="prayer-btn favorite-btn">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <div class="prayer-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h3 class="prayer-title">Before Sleep</h3>
+                    </div>
+                    <div class="prayer-text">
+                        بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ
+                    </div>
+                    <div class="prayer-translation">
+                        In Your name, my Lord, I lay down, and in Your name I rise. If You should take my soul, then have mercy upon it, and if You should return my soul, then protect it as You protect Your righteous servants.
+                    </div>
+                    <div class="prayer-actions">
+                        <span class="prayer-category">Before Sleep</span>
+                        <div class="prayer-buttons">
+                            <button class="prayer-btn copy-btn">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button class="prayer-btn favorite-btn">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const prayerCards = document.querySelectorAll('.prayer-card');
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            const favoriteButtons = document.querySelectorAll('.favorite-btn');
+
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                prayerCards.forEach(card => {
+                    const title = card.querySelector('.prayer-title').textContent.toLowerCase();
+                    const text = card.querySelector('.prayer-text').textContent.toLowerCase();
+                    const translation = card.querySelector('.prayer-translation').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || text.includes(searchTerm) || translation.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Category filter
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const category = button.textContent.toLowerCase();
+                    prayerCards.forEach(card => {
+                        const cardCategory = card.querySelector('.prayer-category').textContent.toLowerCase();
+                        if (category === 'all' || cardCategory === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Copy functionality
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const card = button.closest('.prayer-card');
+                    const text = card.querySelector('.prayer-text').textContent;
+                    navigator.clipboard.writeText(text).then(() => {
+                        button.innerHTML = '<i class="fas fa-check"></i> Copied';
+                        setTimeout(() => {
+                            button.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                        }, 2000);
+                    });
+                });
+            });
+
+            // Favorite functionality
+            favoriteButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    button.classList.toggle('active');
+                    const icon = button.querySelector('i');
+                    icon.classList.toggle('fas');
+                    icon.classList.toggle('far');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

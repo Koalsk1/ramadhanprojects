@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qibla Direction - Ramadhan Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="navbar.html" class="logo">Koalski</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="navbar.html#home">Home</a></li>
+                <li><a href="navbar.html#about">About</a></li>
+                <li><a href="navbar.html#services">Services</a></li>
+                <li><a href="navbar.html#portfolio">Portfolio</a></li>
+                <li><a href="navbar.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="qibla-container">
+        <div class="qibla-content">
+            <div class="qibla-header">
+                <h1>Qibla Direction</h1>
+                <p>Find the direction of the Kaaba for your prayers</p>
+            </div>
+
+            <div class="compass-container">
+                <div class="compass">
+                    <div class="compass-arrow"></div>
+                    <div class="compass-degree">0°</div>
+                </div>
+            </div>
+
+            <div class="location-info">
+                <p><strong>Your Location:</strong> <span id="user-location">Detecting...</span></p>
+                <p><strong>Distance to Kaaba:</strong> <span id="distance">Calculating...</span></p>
+                <p><strong>Direction:</strong> <span id="direction">Determining...</span></p>
+            </div>
+
+            <button class="calibration-btn">
+                <i class="fas fa-sync-alt"></i> Calibrate Compass
+            </button>
+
+            <div class="instructions">
+                <h3>How to Use:</h3>
+                <ol>
+                    <li>Hold your device flat and level</li>
+                    <li>Allow location access when prompted</li>
+                    <li>Rotate your device until the arrow points up</li>
+                    <li>The arrow will then point towards the Qibla</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Qibla Direction functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const compass = document.querySelector('.compass');
+            const compassArrow = document.querySelector('.compass-arrow');
+            const compassDegree = document.querySelector('.compass-degree');
+            const calibrationBtn = document.querySelector('.calibration-btn');
+            let currentDegree = 0;
+
+            // Simulate compass movement (replace with actual device orientation API)
+            function updateCompass(degree) {
+                currentDegree = degree;
+                compass.style.transform = `rotate(${degree}deg)`;
+                compassDegree.textContent = `${Math.abs(degree)}°`;
+            }
+
+            // Handle calibration button click
+            calibrationBtn.addEventListener('click', function() {
+                // Simulate calibration (replace with actual compass calibration)
+                updateCompass(0);
+                this.innerHTML = '<i class="fas fa-check"></i> Calibrated';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-sync-alt"></i> Calibrate Compass';
+                }, 2000);
+            });
+
+            // Simulate device orientation (replace with actual device orientation API)
+            setInterval(() => {
+                const randomDegree = Math.random() * 360 - 180;
+                updateCompass(randomDegree);
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
