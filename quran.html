@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qur'an Tafsir - Ramadhan Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="navbar.html" class="logo">Koalski</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="navbar.html#home">Home</a></li>
+                <li><a href="navbar.html#about">About</a></li>
+                <li><a href="navbar.html#services">Services</a></li>
+                <li><a href="navbar.html#portfolio">Portfolio</a></li>
+                <li><a href="navbar.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="quran-container">
+        <div class="quran-content">
+            <div class="quran-sidebar">
+                <div class="search-box">
+                    <input type="text" placeholder="Search Surah..." id="searchInput">
+                </div>
+                <ul class="surah-list" id="surahList">
+                    <!-- Surah list will be populated by JavaScript -->
+                </ul>
+            </div>
+
+            <div class="quran-main">
+                <div class="quran-header">
+                    <h1>Qur'an Tafsir</h1>
+                    <p>Read and understand the Holy Qur'an</p>
+                </div>
+
+                <div class="quran-text" id="quranText">
+                    بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ
+                </div>
+
+                <div class="translation" id="translation">
+                    In the name of Allah, the Most Gracious, the Most Merciful
+                </div>
+
+                <div class="tafsir">
+                    <h3>Tafsir</h3>
+                    <p id="tafsirText">
+                        This verse is known as the Basmala. It is recited at the beginning of every surah except Surah At-Tawbah. It serves as a reminder of Allah's mercy and grace, and is a way to seek His blessings before beginning any task.
+                    </p>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn" id="prevBtn" disabled>
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="nav-btn" id="nextBtn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Sample data - In a real application, this would come from an API
+        const surahs = [
+            { number: 1, name: 'Al-Fatiha', verses: 7, revelation: 'Meccan' },
+            { number: 2, name: 'Al-Baqarah', verses: 286, revelation: 'Medinan' },
+            { number: 3, name: 'Al-Imran', verses: 200, revelation: 'Medinan' },
+            // Add more surahs...
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const surahList = document.getElementById('surahList');
+            const searchInput = document.getElementById('searchInput');
+            const quranText = document.getElementById('quranText');
+            const translation = document.getElementById('translation');
+            const tafsirText = document.getElementById('tafsirText');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            let currentSurah = 1;
+            let currentVerse = 1;
+
+            // Populate surah list
+            function populateSurahList() {
+                surahList.innerHTML = surahs.map(surah => `
+                    <li class="surah-item ${surah.number === currentSurah ? 'active' : ''}" 
+                        data-surah="${surah.number}">
+                        <div class="surah-number">${surah.number}</div>
+                        <div class="surah-info">
+                            <div class="surah-name">${surah.name}</div>
+                            <div class="surah-details">${surah.verses} verses • ${surah.revelation}</div>
+                        </div>
+                    </li>
+                `).join('');
+            }
+
+            // Handle surah selection
+            function handleSurahSelect(surahNumber) {
+                currentSurah = surahNumber;
+                currentVerse = 1;
+                updateContent();
+                populateSurahList();
+            }
+
+            // Update content based on current surah and verse
+            function updateContent() {
+                // In a real application, this would fetch data from an API
+                quranText.textContent = 'Sample Arabic text...';
+                translation.textContent = 'Sample translation...';
+                tafsirText.textContent = 'Sample tafsir...';
+                
+                // Update navigation buttons
+                prevBtn.disabled = currentVerse === 1;
+                nextBtn.disabled = currentVerse === surahs[currentSurah - 1].verses;
+            }
+
+            // Event listeners
+            surahList.addEventListener('click', (e) => {
+                const surahItem = e.target.closest('.surah-item');
+                if (surahItem) {
+                    const surahNumber = parseInt(surahItem.dataset.surah);
+                    handleSurahSelect(surahNumber);
+                }
+            });
+
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const filteredSurahs = surahs.filter(surah => 
+                    surah.name.toLowerCase().includes(searchTerm)
+                );
+                
+                surahList.innerHTML = filteredSurahs.map(surah => `
+                    <li class="surah-item ${surah.number === currentSurah ? 'active' : ''}" 
+                        data-surah="${surah.number}">
+                        <div class="surah-number">${surah.number}</div>
+                        <div class="surah-info">
+                            <div class="surah-name">${surah.name}</div>
+                            <div class="surah-details">${surah.verses} verses • ${surah.revelation}</div>
+                        </div>
+                    </li>
+                `).join('');
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentVerse > 1) {
+                    currentVerse--;
+                    updateContent();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentVerse < surahs[currentSurah - 1].verses) {
+                    currentVerse++;
+                    updateContent();
+                }
+            });
+
+            // Initial setup
+            populateSurahList();
+            updateContent();
+        });
+    </script>
+</body>
+</html> 

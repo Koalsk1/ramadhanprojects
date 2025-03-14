@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Tasbih - Ramadhan Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="navbar.html" class="logo">Koalski</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="navbar.html#home">Home</a></li>
+                <li><a href="navbar.html#about">About</a></li>
+                <li><a href="navbar.html#services">Services</a></li>
+                <li><a href="navbar.html#portfolio">Portfolio</a></li>
+                <li><a href="navbar.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="tasbih-container">
+        <div class="tasbih-content">
+            <div class="tasbih-header">
+                <h1>Digital Tasbih</h1>
+                <p>Count your dhikr with ease</p>
+            </div>
+
+            <div class="dhikr-selector">
+                <select id="dhikrSelect">
+                    <option value="subhanallah">Subhanallah</option>
+                    <option value="alhamdulillah">Alhamdulillah</option>
+                    <option value="allahuakbar">Allahu Akbar</option>
+                    <option value="laailahaillallah">La ilaha illallah</option>
+                    <option value="astaghfirullah">Astaghfirullah</option>
+                </select>
+            </div>
+
+            <div class="counter-display" id="counter">0</div>
+
+            <div class="counter-buttons">
+                <button class="counter-btn" id="decrementBtn">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button class="counter-btn" id="incrementBtn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <button class="counter-btn reset-btn" id="resetBtn">
+                    <i class="fas fa-redo"></i>
+                </button>
+            </div>
+
+            <div class="target-section">
+                <h3>Set Target</h3>
+                <div class="target-input">
+                    <input type="number" id="targetInput" placeholder="Enter target" min="1">
+                    <button class="preset-btn" id="setTargetBtn">Set Target</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+
+            <div class="preset-buttons">
+                <button class="preset-btn" data-target="33">33</button>
+                <button class="preset-btn" data-target="99">99</button>
+                <button class="preset-btn" data-target="100">100</button>
+                <button class="preset-btn" data-target="1000">1000</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const counter = document.getElementById('counter');
+            const incrementBtn = document.getElementById('incrementBtn');
+            const decrementBtn = document.getElementById('decrementBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const targetInput = document.getElementById('targetInput');
+            const setTargetBtn = document.getElementById('setTargetBtn');
+            const progress = document.getElementById('progress');
+            const presetButtons = document.querySelectorAll('.preset-btn[data-target]');
+
+            let count = 0;
+            let target = 0;
+
+            function updateCounter() {
+                counter.textContent = count;
+                if (target > 0) {
+                    const percentage = (count / target) * 100;
+                    progress.style.width = `${Math.min(percentage, 100)}%`;
+                }
+            }
+
+            function increment() {
+                count++;
+                updateCounter();
+                counter.classList.add('vibration');
+                setTimeout(() => counter.classList.remove('vibration'), 100);
+            }
+
+            function decrement() {
+                if (count > 0) {
+                    count--;
+                    updateCounter();
+                }
+            }
+
+            function reset() {
+                count = 0;
+                updateCounter();
+            }
+
+            function setTarget(value) {
+                target = parseInt(value);
+                if (target > 0) {
+                    updateCounter();
+                }
+            }
+
+            incrementBtn.addEventListener('click', increment);
+            decrementBtn.addEventListener('click', decrement);
+            resetBtn.addEventListener('click', reset);
+
+            setTargetBtn.addEventListener('click', () => {
+                const value = targetInput.value;
+                if (value > 0) {
+                    setTarget(value);
+                }
+            });
+
+            presetButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    setTarget(button.dataset.target);
+                    targetInput.value = button.dataset.target;
+                    presetButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                });
+            });
+
+            // Keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    increment();
+                } else if (e.code === 'Backspace') {
+                    decrement();
+                } else if (e.code === 'Escape') {
+                    reset();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

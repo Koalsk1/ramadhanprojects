@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zakat Calculator - Ramadhan Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="navbar.html" class="logo">Koalski</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="navbar.html#home">Home</a></li>
+                <li><a href="navbar.html#about">About</a></li>
+                <li><a href="navbar.html#services">Services</a></li>
+                <li><a href="navbar.html#portfolio">Portfolio</a></li>
+                <li><a href="navbar.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="zakat-container">
+        <div class="zakat-content">
+            <div class="zakat-header">
+                <h1>Zakat Calculator</h1>
+                <p>Calculate your Zakat obligation based on your assets</p>
+            </div>
+
+            <form class="calculator-form" id="zakatForm">
+                <div class="form-group">
+                    <label>Gold Value</label>
+                    <div class="input-group">
+                        <input type="number" id="goldValue" placeholder="Enter gold value">
+                        <span>grams</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Silver Value</label>
+                    <div class="input-group">
+                        <input type="number" id="silverValue" placeholder="Enter silver value">
+                        <span>grams</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Cash Savings</label>
+                    <div class="input-group">
+                        <input type="number" id="cashValue" placeholder="Enter cash amount">
+                        <span>USD</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Business Assets</label>
+                    <div class="input-group">
+                        <input type="number" id="businessValue" placeholder="Enter business assets">
+                        <span>USD</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="calculate-btn">
+                    <i class="fas fa-calculator"></i> Calculate Zakat
+                </button>
+            </form>
+
+            <div class="result-section" id="resultSection">
+                <div class="result-item">
+                    <span class="label">Gold Zakat</span>
+                    <span class="value" id="goldZakat">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Silver Zakat</span>
+                    <span class="value" id="silverZakat">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Cash Zakat</span>
+                    <span class="value" id="cashZakat">$0.00</span>
+                </div>
+                <div class="result-item">
+                    <span class="label">Business Zakat</span>
+                    <span class="value" id="businessZakat">$0.00</span>
+                </div>
+                <div class="total-zakat">
+                    <span>Total Zakat Due</span>
+                    <span id="totalZakat">$0.00</span>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Important Information</h3>
+                <ul>
+                    <li><i class="fas fa-info-circle"></i> Nisab for gold is 87.48 grams</li>
+                    <li><i class="fas fa-info-circle"></i> Nisab for silver is 612.36 grams</li>
+                    <li><i class="fas fa-info-circle"></i> Zakat rate is 2.5% of total eligible assets</li>
+                    <li><i class="fas fa-info-circle"></i> Assets must be held for one lunar year</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('zakatForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get input values
+            const goldValue = parseFloat(document.getElementById('goldValue').value) || 0;
+            const silverValue = parseFloat(document.getElementById('silverValue').value) || 0;
+            const cashValue = parseFloat(document.getElementById('cashValue').value) || 0;
+            const businessValue = parseFloat(document.getElementById('businessValue').value) || 0;
+
+            // Calculate Zakat (2.5% of total assets)
+            const goldZakat = goldValue * 0.025;
+            const silverZakat = silverValue * 0.025;
+            const cashZakat = cashValue * 0.025;
+            const businessZakat = businessValue * 0.025;
+            const totalZakat = goldZakat + silverZakat + cashZakat + businessZakat;
+
+            // Update result section
+            document.getElementById('goldZakat').textContent = `$${goldZakat.toFixed(2)}`;
+            document.getElementById('silverZakat').textContent = `$${silverZakat.toFixed(2)}`;
+            document.getElementById('cashZakat').textContent = `$${cashZakat.toFixed(2)}`;
+            document.getElementById('businessZakat').textContent = `$${businessZakat.toFixed(2)}`;
+            document.getElementById('totalZakat').textContent = `$${totalZakat.toFixed(2)}`;
+            
+            // Show result section
+            document.getElementById('resultSection').classList.add('active');
+        });
+    </script>
+</body>
+</html> 
